@@ -31,7 +31,7 @@ const updateAutor = (request,response) => {
     const {id} = request.params;
     const autorActualizar = {nameAutor};
 
-    Autor.findByIdAndUpdate( id, {$set : autorActualizar},{new:true})
+    Autor.findByIdAndUpdate( id, {$set : autorActualizar},{runValidators: true, new: true})
         .then( updateOne => {
             return response.status(202).json(updateOne);
         })
